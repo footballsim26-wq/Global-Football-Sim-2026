@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Global Football Simulator 2026 — Simulate the 48-Team Tournament</title>
-  <meta name="description" content="Fan-made 2026 global football tournament simulator. 48 teams, live scores locked, AI match reports, Monte Carlo odds. Free. Entertainment only."/>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-  <!-- Google AdSense — paste your code here once approved -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-  <!-- Google Analytics — paste your GA4 code here -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
-</head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-</html>
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
+}
