@@ -1,0 +1,46 @@
+// /api/live-scores.js — Vercel Serverless Function
+// Proxies ESPN's public scoreboard API server-side (avoids CORS, adds caching)
+// No API key needed — ESPN's public endpoint is free and open
+
+export default async function handler(req, res) {
+  // Allow CORS from your frontend
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+
+  // Cache for 30 seconds on Vercel's edge — reduces ESPN load
+  res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate=120');
+
+  try {
+    const ESPN_URL = 'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard';
+    const response = await fetch(ESPN_URL, {
+      headers: { 'User-Agent': 'GlobalFootballSim/1.0 (fan simulator)' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`ESPN returned ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return res.status(200).json({
+      ok: true,
+      source: 'ESPN public scoreboard',
+      updatedAt: new Date().toISOString(),
+      events: data.events || [],
+      // Pass full data too in case structure varies
+      data
+    });
+
+  } catch (error) {
+    console.error('Live scores error:', error.message);
+
+    // Never crash the frontend — return graceful empty response
+    return res.status(200).json({
+      ok: false,
+      error: error.message,
+      updatedAt: new Date().toISOString(),
+      events: [],
+      data: null
+    });
+  }
+}
