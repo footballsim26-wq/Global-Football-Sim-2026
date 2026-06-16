@@ -1654,7 +1654,7 @@ function applyLiveData(espnEvents){
 
 // ── GITHUB RAW URL ── Update YOUR_USERNAME once after creating the repo ──
 // This URL is CORS-free and auto-updates every 5 minutes via GitHub Actions
-const GITHUB_RESULTS_URL="https://raw.githubusercontent.com/footballsim26-wq/WC2026-Results/main/results.json";
+const GITHUB_RESULTS_URL="https://raw.githubusercontent.com/YOUR_USERNAME/wc2026-results/main/results.json";
 
 async function fetchFromGitHub(){
   // Reads pre-processed results.json — no ESPN parsing needed, no CORS issues
