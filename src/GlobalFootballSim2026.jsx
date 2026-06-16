@@ -795,29 +795,20 @@ const OFFICIAL_MATCHES = (() => {
 // ── RESULT STATE (locked real results drive simAll) ──
 const RESULT_STATE = { byMatchId:{} };
 
-// ── REAL MATCH RESULTS (manually verified — never overwritten by API) ──
-// Sources: Reuters, CBS Sports, Canada Soccer — verified June 13, 2026
+// ── VERIFIED MATCH RESULTS — updated June 15, 2026 (14 matches played) ──
 const MANUAL_VERIFIED_RESULTS = {
-  1:{id:1,home:"Mexico",away:"South Africa",homeScore:2,awayScore:0,
-     status:"post",locked:true,source:"Verified (Reuters/CBS)",updatedAt:"2026-06-11",
-     penalties:false,homePens:0,awayPens:0,homeAdvances:true},
-  2:{id:2,home:"South Korea",away:"Czechia",homeScore:2,awayScore:1,
-     status:"post",locked:true,source:"Verified (Reuters/CBS)",updatedAt:"2026-06-11",
-     penalties:false,homePens:0,awayPens:0,homeAdvances:true},
-  7:{id:7,home:"Canada",away:"Bosnia & Herzegovina",homeScore:1,awayScore:1,
-     status:"post",locked:true,source:"Verified (Canada Soccer/CBS)",updatedAt:"2026-06-12",
-     penalties:false,homePens:0,awayPens:0,homeAdvances:false},
-  19:{id:19,home:"USA",away:"Paraguay",homeScore:4,awayScore:1,
-      status:"post",locked:true,source:"Verified (Reuters/CBS)",updatedAt:"2026-06-13",
-      penalties:false,homePens:0,awayPens:0,homeAdvances:true},
-  // Group B Match 1 — Levi's Stadium, Santa Clara
-  8:{id:8,home:"Qatar",away:"Switzerland",homeScore:1,awayScore:1,
-     status:"post",locked:true,source:"Verified (Yahoo Sports/ESPN)",updatedAt:"2026-06-13",
-     penalties:false,homePens:0,awayPens:0,homeAdvances:false},
-  // Group C Match 1 — MetLife Stadium, East Rutherford
-  13:{id:13,home:"Brazil",away:"Morocco",homeScore:1,awayScore:1,
-      status:"post",locked:true,source:"Verified (Yahoo Sports/ESPN)",updatedAt:"2026-06-13",
-      penalties:false,homePens:0,awayPens:0,homeAdvances:false},
+  1:{id:1,home:"Mexico",away:"South Africa",homeScore:2,awayScore:0,status:"post",locked:true,source:"Verified (Reuters/CBS)",updatedAt:"2026-06-11",penalties:false,homePens:0,awayPens:0,homeAdvances:true},
+  2:{id:2,home:"South Korea",away:"Czechia",homeScore:2,awayScore:1,status:"post",locked:true,source:"Verified (Reuters/CBS)",updatedAt:"2026-06-11",penalties:false,homePens:0,awayPens:0,homeAdvances:true},
+  7:{id:7,home:"Canada",away:"Bosnia & Herzegovina",homeScore:1,awayScore:1,status:"post",locked:true,source:"Verified (Canada Soccer)",updatedAt:"2026-06-12",penalties:false,homePens:0,awayPens:0,homeAdvances:false},
+  8:{id:8,home:"Qatar",away:"Switzerland",homeScore:1,awayScore:1,status:"post",locked:true,source:"Verified (ESPN)",updatedAt:"2026-06-13",penalties:false,homePens:0,awayPens:0,homeAdvances:false},
+  13:{id:13,home:"Brazil",away:"Morocco",homeScore:1,awayScore:1,status:"post",locked:true,source:"Verified (ESPN)",updatedAt:"2026-06-13",penalties:false,homePens:0,awayPens:0,homeAdvances:false},
+  14:{id:14,home:"Haiti",away:"Scotland",homeScore:0,awayScore:1,status:"post",locked:true,source:"Verified (CBS/ESPN)",updatedAt:"2026-06-13",penalties:false,homePens:0,awayPens:0,homeAdvances:false},
+  19:{id:19,home:"USA",away:"Paraguay",homeScore:4,awayScore:1,status:"post",locked:true,source:"Verified (Reuters/CBS)",updatedAt:"2026-06-13",penalties:false,homePens:0,awayPens:0,homeAdvances:true},
+  20:{id:20,home:"Australia",away:"Türkiye",homeScore:2,awayScore:0,status:"post",locked:true,source:"Verified (ESPN)",updatedAt:"2026-06-13",penalties:false,homePens:0,awayPens:0,homeAdvances:true},
+  25:{id:25,home:"Germany",away:"Curaçao",homeScore:7,awayScore:1,status:"post",locked:true,source:"Verified (ESPN)",updatedAt:"2026-06-14",penalties:false,homePens:0,awayPens:0,homeAdvances:true},
+  26:{id:26,home:"Côte d'Ivoire",away:"Ecuador",homeScore:1,awayScore:0,status:"post",locked:true,source:"Verified (ESPN)",updatedAt:"2026-06-14",penalties:false,homePens:0,awayPens:0,homeAdvances:true},
+  31:{id:31,home:"Netherlands",away:"Japan",homeScore:2,awayScore:2,status:"post",locked:true,source:"Verified (ESPN)",updatedAt:"2026-06-14",penalties:false,homePens:0,awayPens:0,homeAdvances:false},
+  32:{id:32,home:"Sweden",away:"Tunisia",homeScore:5,awayScore:1,status:"post",locked:true,source:"Verified (ESPN/FIFA)",updatedAt:"2026-06-14",penalties:false,homePens:0,awayPens:0,homeAdvances:true},
 };
 // Seed RESULT_STATE immediately at load
 Object.assign(RESULT_STATE.byMatchId, MANUAL_VERIFIED_RESULTS);
@@ -1654,7 +1645,7 @@ function applyLiveData(espnEvents){
 
 // ── GITHUB RAW URL ── Update YOUR_USERNAME once after creating the repo ──
 // This URL is CORS-free and auto-updates every 5 minutes via GitHub Actions
-const GITHUB_RESULTS_URL="https://raw.githubusercontent.com/YOUR_USERNAME/wc2026-results/main/results.json";
+const GITHUB_RESULTS_URL="https://raw.githubusercontent.com/footballsim26-wq/WC2026-Results/main/results.json";
 
 async function fetchFromGitHub(){
   // Reads pre-processed results.json — no ESPN parsing needed, no CORS issues
